@@ -19,24 +19,23 @@ window.onload = () => {
             document.getElementById("login-section").classList.add("hidden");
             document.getElementById("dashboard").classList.remove("hidden");
 
-            // Datos básicos de Discord
             document.getElementById("user-name").innerText = username.toUpperCase();
-            document.getElementById("user-id").innerText = `EXPEDIENTE: #SV-${id.substring(0, 8)}`;
-            document.getElementById("user-avatar").src = avatar ? `https://cdn.discordapp.com/avatars/${id}/${avatar}.png?size=512` : "https://cdn.discordapp.com/embed/avatars/1.png";
+            document.getElementById("user-id").innerText = `ID: #SV-${id.substring(0, 8)}`;
+            
+            if(avatar) {
+                document.getElementById("user-avatar").src = `https://cdn.discordapp.com/avatars/${id}/${avatar}.png`;
+            }
 
-            // --- CONEXIÓN CON FIREBASE ---
-            // Buscamos los datos del usuario en tu URL de Firebase
+            // Consulta a Firebase
             fetch(`https://pnc-cabanas-default-rtdb.firebaseio.com/usuarios/${id}.json`)
             .then(res => res.json())
             .then(data => {
                 if (data) {
-                    // Si el usuario existe en Firebase, actualizamos la web con sus datos reales
-                    updateField("balance-cash", `$${data.dinero || '0'}`);
-                    updateField("balance-bank", `$${data.banco || '0'}`);
-                    updateField("fines", `$${data.multas || '0'}`);
-                    updateField("arrests", data.arrestos || '0');
-                    updateField("warnings", data.advertencias || '0');
-                    updateField("license-status", data.licencia || 'VIGENTE');
+                    document.getElementById("balance-cash").innerText = `$${data.dinero || '0'}`;
+                    document.getElementById("balance-bank").innerText = `$${data.banco || '0'}`;
+                    document.getElementById("fines").innerText = `$${data.multas || '0'}`;
+                    document.getElementById("arrests").innerText = data.arrestos || '0';
+                    document.getElementById("warnings").innerText = data.advertencias || '0';
                 }
             });
 
@@ -45,9 +44,3 @@ window.onload = () => {
         .catch(console.error);
     }
 };
-
-// Función auxiliar para actualizar textos de forma segura
-function updateField(id, value) {
-    const el = document.getElementById(id);
-    if (el) el.innerText = value;
-}
