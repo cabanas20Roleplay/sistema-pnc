@@ -4,7 +4,6 @@ function loginWithDiscord() {
 
 window.onload = () => {
     const fragment = new URLSearchParams(window.location.hash.slice(1));
-
     if (fragment.has("access_token")) {
         const accessToken = fragment.get("access_token");
         const tokenType = fragment.get("token_type");
@@ -16,21 +15,20 @@ window.onload = () => {
         .then(response => {
             const { username, id, avatar } = response;
             
+            // UI Switch
             document.getElementById("login-section").classList.add("hidden");
             document.getElementById("dashboard").classList.remove("hidden");
 
+            // Basic Info
             document.getElementById("user-name").innerText = username.toUpperCase();
-            document.getElementById("user-id").innerText = `ID: #SV-${id.substring(0, 8)}`;
-            
-            if(avatar) {
-                document.getElementById("user-avatar").src = `https://cdn.discordapp.com/avatars/${id}/${avatar}.png`;
-            }
+            document.getElementById("user-id").innerText = `EXPEDIENTE: #SV-${id.substring(0, 8)}`;
+            if(avatar) document.getElementById("user-avatar").src = `https://cdn.discordapp.com/avatars/${id}/${avatar}.png?size=256`;
 
-            // Consulta a Firebase
+            // Firebase Call
             fetch(`https://pnc-cabanas-default-rtdb.firebaseio.com/usuarios/${id}.json`)
             .then(res => res.json())
             .then(data => {
-                if (data) {
+                if(data) {
                     document.getElementById("balance-cash").innerText = `$${data.dinero || '0'}`;
                     document.getElementById("balance-bank").innerText = `$${data.banco || '0'}`;
                     document.getElementById("fines").innerText = `$${data.multas || '0'}`;
@@ -40,8 +38,6 @@ window.onload = () => {
             });
 
             window.history.replaceState({}, document.title, "/sistema-pnc/");
-        })
-        .catch(console.error);
+        });
     }
 };
-
