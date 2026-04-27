@@ -1,45 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono:wght@300;500&display=swap');
+
+:root {
+    --pnc-blue: #00a8ff;
+    --pnc-dark: #0a0c10;
+    --pnc-card: rgba(22, 27, 34, 0.8);
+    --pnc-border: #30363d;
+    --accent: #238636;
+}
+
 body {
-    background-color: #0b0e14;
+    background: radial-gradient(circle at center, #111a28 0%, #05070a 100%);
     color: #e6edf3;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Roboto Mono', monospace;
     margin: 0;
-    text-align: center;
+    padding: 0;
+    overflow-x: hidden;
 }
 
-.container { padding: 40px; }
-
-.card {
-    background: #161b22;
-    border: 1px solid #30363d;
-    border-radius: 12px;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
-    max-width: 600px;
-    margin: 20px auto;
 }
 
-#login-button {
-    background-color: #238636;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 6px;
+/* Header Estilo Militar */
+header {
+    border-bottom: 2px solid var(--pnc-blue);
+    padding: 20px 0;
+    margin-bottom: 40px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 4px;
+    color: var(--pnc-blue);
+    text-shadow: 0 0 10px rgba(0, 168, 255, 0.5);
+}
+
+/* Tarjetas y Contenedores */
+.card {
+    background: var(--pnc-card);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--pnc-border);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    transition: 0.3s;
+}
+
+.card:hover {
+    border-color: var(--pnc-blue);
+}
+
+/* Perfil de Usuario */
+#user-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid var(--pnc-blue);
+    margin-bottom: 15px;
+    box-shadow: 0 0 20px rgba(0, 168, 255, 0.3);
+}
+
+/* Categorías (Grid) */
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.category-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--pnc-border);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.category-card h3 {
+    color: var(--pnc-blue);
+    margin-top: 0;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Botones */
+.btn {
+    padding: 12px 25px;
+    border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s;
+    font-family: 'Orbitron', sans-serif;
+    border: none;
 }
 
-.stats-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 15px;
-    max-width: 800px;
-    margin: 0 auto;
-}
+.btn-discord { background: #5865F2; color: white; margin-top: 10px; }
+.btn-discord:hover { background: #4752c4; transform: scale(1.05); }
 
-.stat-box {
-    background: #21262d;
-    padding: 15px;
-    border-radius: 8px;
-    border-left: 4px solid #1f6feb;
-}
+.btn-login { background: var(--pnc-blue); color: white; }
 
 .hidden { display: none; }
+
+/* Tags de Estado */
+.status-tag {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    background: #238636;
+    color: white;
+}
