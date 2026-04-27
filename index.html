@@ -3,95 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PNC El Salvador | Portal de Servicios</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono:wght@300;500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=1.2">
+    <title>PNC El Salvador | MDT v2.5</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono:wght@300;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=2.5">
 </head>
 <body>
     <div class="container">
-        <header class="main-header">
-            <div class="logo-container">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Seal_of_the_National_Civil_Police_of_El_Salvador.svg/1200px-Seal_of_the_National_Civil_Police_of_El_Salvador.svg.png" alt="Logo PNC" class="pnc-logo">
-                <div class="header-text">
-                    <h1>POLICÍA NACIONAL CIVIL</h1>
-                    <p>GOBIERNO DE EL SALVADOR | CABAÑAS 2.0</p>
-                </div>
-            </div>
+        <header>
+            <img src="https://cdn.discordapp.com/attachments/1447022061603131536/1498362427082018876/Logo_PNC_El_Salvador.svg.png" class="pnc-logo" alt="PNC LOGO">
+            <h1>SISTEMA MDT CENTRAL</h1>
+            <p id="system-clock">ACCESO RESTRINGIDO - JURISDICCIÓN CABAÑAS</p>
         </header>
 
-        <div id="login-section">
-            <section class="hero card">
-                <div class="hero-content">
-                    <h2>PORTAL DE ARCHIVO DIGITAL</h2>
-                    <p>Bienvenido al sistema centralizado de gestión ciudadana. Aquí podrá consultar su estado legal, económico y penal dentro de la jurisdicción.</p>
-                    <button class="btn btn-login" onclick="loginWithDiscord()">ENTRAR AL SISTEMA</button>
-                    <p class="policy-note">Al ingresar, usted acepta el tratamiento de datos para fines de registro de rol.</p>
-                </div>
-            </section>
-
-            <section class="info-grid">
-                <div class="info-card">
-                    <h3>🔍 TRANSPARENCIA</h3>
-                    <p>El Bot de Discord registra automáticamente sus multas y arrestos para mantener la integridad del rol en tiempo real.</p>
-                </div>
-                <div class="info-card">
-                    <h3>🛡️ SEGURIDAD</h3>
-                    <p>Utilizamos OAuth2 de Discord. Sus credenciales son privadas y nunca almacenamos su contraseña.</p>
-                </div>
-                <div class="info-card">
-                    <h3>📊 EFICIENCIA</h3>
-                    <p>Consulte sus licencias de conducir y portación de armas de manera instantánea desde cualquier dispositivo.</p>
-                </div>
-            </section>
-
-            <div class="discord-cta">
-                <p>¿Aún no eres parte de nuestra comunidad?</p>
-                <a href="https://discord.gg/FfTcXt4H7p" target="_blank" class="btn btn-discord">UNIRSE AL DISCORD OFICIAL</a>
-            </div>
+        <div id="login-section" class="card main-login">
+            <div class="scan-effect"></div>
+            <h2>AUTENTICACIÓN REQUERIDA</h2>
+            <p>Conecte su credencial de Discord para verificar nivel de acceso.</p>
+            <button class="btn btn-login" onclick="loginWithDiscord()">INICIAR SESIÓN</button>
         </div>
 
         <div id="dashboard" class="hidden">
-            <div class="card profile-card">
-                <div class="profile-header">
-                    <img id="user-avatar" src="" alt="Avatar">
-                    <div class="profile-meta">
-                        <h2 id="user-name">---</h2>
-                        <p id="user-id">---</p>
-                        <span class="badge">CIUDADANO VERIFICADO</span>
+            <div class="card profile-header">
+                <img id="user-avatar" src="" alt="Avatar">
+                <div class="user-meta">
+                    <h2 id="user-name">---</h2>
+                    <span id="access-level" class="badge">CONSULTOR</span>
+                </div>
+            </div>
+
+            <div id="admin-panel" class="card hidden admin-zone">
+                <h3 id="panel-title">MÓDULO DE ACCIÓN</h3>
+                <div class="search-bar">
+                    <input type="text" id="search-id" placeholder="ID de Discord del Ciudadano">
+                    <button onclick="buscarCiudadano()" class="btn btn-search">BUSCAR</button>
+                </div>
+
+                <div id="editor-form" class="hidden">
+                    <hr>
+                    <div class="form-grid">
+                        <div class="full-control only-high">
+                            <label>Nombre Completo RP:</label>
+                            <input type="text" id="edit-name">
+                        </div>
+                        <div>
+                            <label>Dinero:</label>
+                            <input type="number" id="edit-cash">
+                        </div>
+                        <div>
+                            <label>Banco:</label>
+                            <input type="number" id="edit-bank">
+                        </div>
+                        <div class="staff-control">
+                            <label>Tipo de Acción:</label>
+                            <select id="action-type">
+                                <option value="multa">MULTA</option>
+                                <option value="arresto">ARRESTO</option>
+                                <option value="advertencia">ADVERTENCIA</option>
+                            </select>
+                        </div>
+                        <div class="staff-control">
+                            <label>URL Evidencia (Foto):</label>
+                            <input type="text" id="edit-photo" placeholder="https://imgur.com/...">
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <button onclick="guardarCambios()" class="btn btn-save">GUARDAR REGISTRO</button>
+                        <button id="btn-delete" onclick="borrarPerfil()" class="btn btn-red only-high hidden">ELIMINAR PERFIL</button>
                     </div>
                 </div>
             </div>
 
             <div class="categories-grid">
                 <div class="category-card">
-                    <h3>🪪 DOCUMENTOS</h3>
-                    <div class="row"><span>Lic. Conducción:</span> <span id="license-status" class="val-green">VIGENTE</span></div>
-                    <div class="row"><span>Lic. Armas:</span> <span id="weapon-license" class="val-red">PENDIENTE</span></div>
+                    <h3>💰 ESTADO FINANCIERO</h3>
+                    <p>Efectivo: <span id="val-cash" class="val-green">$0</span></p>
+                    <p>Banco: <span id="val-bank" class="val-green">$0</span></p>
                 </div>
                 <div class="category-card">
-                    <h3>💰 FINANZAS</h3>
-                    <div class="row"><span>Efectivo:</span> <span id="balance-cash" class="val-green">$0.00</span></div>
-                    <div class="row"><span>Banco:</span> <span id="balance-bank" class="val-green">$0.00</span></div>
-                    <div class="row"><span>Multas Totales:</span> <span id="fines" class="val-red">$0.00</span></div>
+                    <h3>🚔 EXPEDIENTE JUDICIAL</h3>
+                    <p>Licencia: <span id="val-license">---</span></p>
+                    <p>Arrestos: <span id="val-arrests">0</span></p>
                 </div>
-                <div class="category-card">
-                    <h3>🚨 EXPEDIENTE</h3>
-                    <div class="row"><span>Advertencias:</span> <span id="warnings">0</span></div>
-                    <div class="row"><span>Arrestos:</span> <span id="arrests">0</span></div>
+                <div id="evidence-display" class="category-card full-width hidden">
+                    <h3>🖼️ ÚLTIMA EVIDENCIA REGISTRADA</h3>
+                    <img id="evidence-img" src="" alt="Evidencia" style="width: 100%; border-radius: 5px; margin-top: 10px;">
                 </div>
             </div>
-
-            <div class="actions">
-                <button onclick="location.reload()" class="btn-logout">CERRAR SESIÓN SEGURA</button>
-            </div>
+            
+            <button onclick="location.reload()" class="btn-logout">DESCONECTAR TERMINAL</button>
         </div>
-
-        <footer class="footer">
-            <p>&copy; 2026 PNC El Salvador - Proyecto de Rol Cabañas 2.0</p>
-            <p>Comunidad • Integridad • Justicia</p>
-        </footer>
     </div>
-
-    <script src="script.js?v=1.2"></script>
+    <script src="script.js?v=2.5"></script>
 </body>
 </html>
