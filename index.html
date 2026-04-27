@@ -1,98 +1,34 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PNC El Salvador | MDT v2.5</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono:wght@300;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2.5">
+  <meta charset="UTF-8">
+  <title>MDT PNC Cabañas</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <img src="https://cdn.discordapp.com/attachments/1447022061603131536/1498362427082018876/Logo_PNC_El_Salvador.svg.png" class="pnc-logo" alt="PNC LOGO">
-            <h1>SISTEMA MDT CENTRAL</h1>
-            <p id="system-clock">ACCESO RESTRINGIDO - JURISDICCIÓN CABAÑAS</p>
-        </header>
 
-        <div id="login-section" class="card main-login">
-            <div class="scan-effect"></div>
-            <h2>AUTENTICACIÓN REQUERIDA</h2>
-            <p>Conecte su credencial de Discord para verificar nivel de acceso.</p>
-            <button class="btn btn-login" onclick="loginWithDiscord()">INICIAR SESIÓN</button>
-        </div>
+<div id="login-screen">
+  <h1>MDT PNC</h1>
+  <button onclick="loginDiscord()">Iniciar con Discord</button>
+</div>
 
-        <div id="dashboard" class="hidden">
-            <div class="card profile-header">
-                <img id="user-avatar" src="" alt="Avatar">
-                <div class="user-meta">
-                    <h2 id="user-name">---</h2>
-                    <span id="access-level" class="badge">CONSULTOR</span>
-                </div>
-            </div>
+<div id="dashboard" class="hidden">
+  
+  <aside class="sidebar">
+    <h2>PNC</h2>
+    <ul>
+      <li onclick="loadModule('perfil')">Perfil</li>
+      <li onclick="loadModule('economia')">Economía</li>
+      <li id="expedientes-btn" class="hidden" onclick="loadModule('expedientes')">Expedientes</li>
+    </ul>
+  </aside>
 
-            <div id="admin-panel" class="card hidden admin-zone">
-                <h3 id="panel-title">MÓDULO DE ACCIÓN</h3>
-                <div class="search-bar">
-                    <input type="text" id="search-id" placeholder="ID de Discord del Ciudadano">
-                    <button onclick="buscarCiudadano()" class="btn btn-search">BUSCAR</button>
-                </div>
+  <main id="content">
+    <h1>Bienvenido</h1>
+  </main>
 
-                <div id="editor-form" class="hidden">
-                    <hr>
-                    <div class="form-grid">
-                        <div class="full-control only-high">
-                            <label>Nombre Completo RP:</label>
-                            <input type="text" id="edit-name">
-                        </div>
-                        <div>
-                            <label>Dinero:</label>
-                            <input type="number" id="edit-cash">
-                        </div>
-                        <div>
-                            <label>Banco:</label>
-                            <input type="number" id="edit-bank">
-                        </div>
-                        <div class="staff-control">
-                            <label>Tipo de Acción:</label>
-                            <select id="action-type">
-                                <option value="multa">MULTA</option>
-                                <option value="arresto">ARRESTO</option>
-                                <option value="advertencia">ADVERTENCIA</option>
-                            </select>
-                        </div>
-                        <div class="staff-control">
-                            <label>URL Evidencia (Foto):</label>
-                            <input type="text" id="edit-photo" placeholder="https://imgur.com/...">
-                        </div>
-                    </div>
-                    <div class="action-buttons">
-                        <button onclick="guardarCambios()" class="btn btn-save">GUARDAR REGISTRO</button>
-                        <button id="btn-delete" onclick="borrarPerfil()" class="btn btn-red only-high hidden">ELIMINAR PERFIL</button>
-                    </div>
-                </div>
-            </div>
+</div>
 
-            <div class="categories-grid">
-                <div class="category-card">
-                    <h3>💰 ESTADO FINANCIERO</h3>
-                    <p>Efectivo: <span id="val-cash" class="val-green">$0</span></p>
-                    <p>Banco: <span id="val-bank" class="val-green">$0</span></p>
-                </div>
-                <div class="category-card">
-                    <h3>🚔 EXPEDIENTE JUDICIAL</h3>
-                    <p>Licencia: <span id="val-license">---</span></p>
-                    <p>Arrestos: <span id="val-arrests">0</span></p>
-                </div>
-                <div id="evidence-display" class="category-card full-width hidden">
-                    <h3>🖼️ ÚLTIMA EVIDENCIA REGISTRADA</h3>
-                    <img id="evidence-img" src="" alt="Evidencia" style="width: 100%; border-radius: 5px; margin-top: 10px;">
-                </div>
-            </div>
-            
-            <button onclick="location.reload()" class="btn-logout">DESCONECTAR TERMINAL</button>
-        </div>
-    </div>
-    <script src="script.js?v=2.5"></script>
+<script src="script.js"></script>
 </body>
 </html>
