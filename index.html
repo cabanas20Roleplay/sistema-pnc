@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PNC El Salvador - Portal Ciudadano</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="https://cdn.discordapp.com/emojis/1467447920876982283.png" alt="PNC Logo" class="logo">
+            <h1>SISTEMA DE JUSTICIA - CABAÑAS 2.0</h1>
+            <p>Comunidad • Integridad • Justicia</p>
+        </header>
+
+        <div id="login-section" class="card">
+            <h2>Bienvenido al Portal Ciudadano</h2>
+            <p>Para ver sus licencias, multas y estado económico, debe sincronizar su cuenta.</p>
+            <button id="login-button" onclick="loginWithDiscord()">CONECTAR CON DISCORD</button>
+        </div>
+
+        <div id="dashboard" class="hidden">
+            <div class="user-info card">
+                <img id="user-avatar" src="" alt="Avatar">
+                <h3 id="user-name">Cargando...</h3>
+                <p id="user-id"></p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <h4>💰 Economía</h4>
+                    <p id="balance">$0.00</p>
+                </div>
+                <div class="stat-box">
+                    <h4>🪪 Licencias</h4>
+                    <p id="licenses">Consultando...</p>
+                </div>
+                <div class="stat-box">
+                    <h4>🚨 Antecedentes</h4>
+                    <p id="records">Ninguno</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
