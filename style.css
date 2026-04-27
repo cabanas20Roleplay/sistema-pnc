@@ -1,0 +1,45 @@
+body {
+    background-color: #0b0e14;
+    color: #e6edf3;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    text-align: center;
+}
+
+.container { padding: 40px; }
+
+.card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+#login-button {
+    background-color: #238636;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.stat-box {
+    background: #21262d;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #1f6feb;
+}
+
+.hidden { display: none; }
