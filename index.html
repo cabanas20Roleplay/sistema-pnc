@@ -1,49 +1,59 @@
-<div id="login-section" class="card">
-    <h2 style="font-family: 'Orbitron';">AUTENTICACIÓN REQUERIDA</h2>
-    <p>Acceda con su cuenta de Discord para verificar su identidad y documentos oficiales.</p>
-    <button class="btn btn-login" onclick="loginWithDiscord()">CONECTAR SISTEMA</button>
-    <br><br>
-    <hr style="border: 0; border-top: 1px solid #30363d; margin: 20px 0;">
-    <p style="font-size: 0.8rem; color: #8b949e;">¿Aún no eres parte de la fuerza?</p>
-    <a href="https://discord.gg/FfTcXt4H7p" class="btn btn-discord" target="_blank">UNIRSE AL DISCORD</a>
-</div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PNC | Portal de Inteligencia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono:wght@300;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>PNC EL SALVADOR</h1>
+            <p>SISTEMA CENTRAL DE ARCHIVO DIGITAL</p>
+        </header>
 
-<div id="dashboard" class="hidden">
-    <div class="card">
-        <img id="user-avatar" src="" alt="Perfil">
-        <h2 id="user-name" style="font-family: 'Orbitron'; margin-top: 15px;">---</h2>
-        <p id="user-id" style="color: var(--pnc-blue); margin-bottom: 10px;"></p>
-        <span class="status-tag">CIUDADANO REGISTRADO</span>
+        <div id="login-section" class="card">
+            <h2>ACCESO RESTRINGIDO</h2>
+            <p>Se requiere autenticación para consultar expedientes.</p>
+            <button class="btn btn-login" onclick="loginWithDiscord()">CONECTAR CON DISCORD</button>
+            <br><br>
+            <a href="https://discord.gg/FfTcXt4H7p" target="_blank" class="btn btn-discord">UNIRSE AL DISCORD</a>
+        </div>
+
+        <div id="dashboard" class="hidden">
+            <div class="card profile-header">
+                <img id="user-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Perfil">
+                <h2 id="user-name">CARGANDO...</h2>
+                <p id="user-id"></p>
+                <span class="status-tag">CIUDADANO ACTIVO</span>
+            </div>
+
+            <div class="categories-grid">
+                <div class="category-card">
+                    <h3>📄 DOCUMENTOS</h3>
+                    <p>🚗 Licencia Conducir: <span id="license-status" class="val-green">ACTIVA</span></p>
+                    <p>🔫 Licencia Armas: <span id="weapon-license" class="val-red">PENDIENTE</span></p>
+                </div>
+                <div class="category-card">
+                    <h3>💰 BILLETERA</h3>
+                    <p>💵 Efectivo: <span id="balance-cash" class="val-green">$0.00</span></p>
+                    <p>🏦 Banco: <span id="balance-bank" class="val-green">$0.00</span></p>
+                    <p>🧾 Multas: <span id="fines" class="val-red">$0.00</span></p>
+                </div>
+                <div class="category-card">
+                    <h3>🚨 ANTECEDENTES</h3>
+                    <p>🚫 Advertencias: <span id="warnings">0</span></p>
+                    <p>🚔 Arrestos: <span id="arrests">0</span></p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 20px; text-align: center;">
+                <button onclick="location.reload()" class="btn-logout">CERRAR SESIÓN</button>
+            </div>
+        </div>
     </div>
-
-    <div class="categories-grid">
-        <div class="category-card">
-            <h3>🪪 DOCUMENTOS</h3>
-            <p>🚗 Licencia Conducir: <span id="license-status" style="color: #238636;">ACTIVA</span></p>
-            <p>🔫 Licencia Armas: <span id="weapon-license" style="color: #f85149;">PENDIENTE</span></p>
-        </div>
-
-        <div class="category-card">
-            <h3>💰 BILLETERA</h3>
-            <p>💵 Efectivo: <span id="balance-cash" style="color: #238636;">$0.00</span></p>
-            <p>🏦 Banco: <span id="balance-bank" style="color: #238636;">$0.00</span></p>
-            <p>🧾 Multas: <span id="fines" style="color: #f85149;">$0.00</span></p>
-        </div>
-
-        <div class="category-card">
-            <h3>🚨 ANTECEDENTES</h3>
-            <p>🚫 Advertencias: <span id="warnings">0</span></p>
-            <p>🚔 Arrestos: <span id="arrests">0</span></p>
-        </div>
-
-        <div class="category-card">
-            <h3>🚘 PROPIEDADES</h3>
-            <p>🏠 Viviendas: <span id="houses">0</span></p>
-            <p>🏎️ Vehículos: <span id="vehicles">0</span></p>
-        </div>
-    </div>
-    
-    <div style="text-align: center; margin-top: 30px;">
-        <button onclick="location.href='https://cabanas20roleplay.github.io/sistema-pnc/'" class="btn" style="background: #f85149; color: white; font-size: 0.7rem;">CERRAR SESIÓN</button>
-    </div>
-</div>
+    <script src="script.js"></script>
+</body>
+</html>
