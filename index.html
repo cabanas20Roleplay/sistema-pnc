@@ -3,63 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PNC | Portal de Inteligencia</title>
+    <title>SISTEMA PNC - CABAÑAS 2.0</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>SISTEMA PNC EL SALVADOR</h1>
-            <p>UNIDAD DE ARCHIVO DIGITAL - CABAÑAS 2.0</p>
+            <h1>PNC EL SALVADOR</h1>
+            <p style="color: #8b949e;">PORTAL OFICIAL DE CONSULTA CIUDADANA</p>
         </header>
 
         <div id="login-section" class="card">
-            <h2>ACCESO RESTRINGIDO</h2>
-            <p>Se requiere autenticación biométrica (Discord) para acceder a los expedientes.</p>
-            <button class="btn btn-login" onclick="loginWithDiscord()">INICIAR SESIÓN</button>
+            <h2 style="font-family: 'Orbitron';">AUTENTICACIÓN REQUERIDA</h2>
+            <p>Acceda con su cuenta de Discord para verificar su identidad y documentos.</p>
+            <button class="btn btn-login" onclick="loginWithDiscord()">CONECTAR SISTEMA</button>
             <br><br>
-            <a href="https://discord.gg/TU_INVITACION" target="_blank" class="btn btn-discord">UNIRSE AL DISCORD</a>
+            <hr style="border: 0; border-top: 1px solid #30363d;">
+            <p style="font-size: 0.8rem;">¿Aún no eres parte de la comunidad?</p>
+            <a href="https://discord.gg/TU_LINK_AQUI" class="btn btn-discord" target="_blank">UNIRSE AL DISCORD</a>
         </div>
 
         <div id="dashboard" class="hidden">
-            <div class="card" style="margin-bottom: 20px;">
-                <img id="user-avatar" src="" alt="Foto Perfil">
-                <h2 id="user-name" style="margin: 0; font-family: 'Orbitron';">---</h2>
-                <p id="user-id" style="color: #8b949e;"></p>
-                <span class="status-tag">CIUDADANO ACTIVO</span>
+            <div class="card">
+                <img id="user-avatar" src="" alt="Perfil">
+                <h2 id="user-name" style="font-family: 'Orbitron'; margin-top: 15px;">---</h2>
+                <p id="user-id" style="color: var(--pnc-blue); margin-bottom: 10px;"></p>
+                <span class="status-tag">CIUDADANO REGISTRADO</span>
             </div>
 
             <div class="categories-grid">
                 <div class="category-card">
-                    <h3>📄 DOCUMENTACIÓN</h3>
-                    <p>🪪 ID: <span style="color: #fff;">VIGENTE</span></p>
-                    <p>🔫 Lic. Armas: <span style="color: #f85149;">NO POSEE</span></p>
-                    <p>🚗 Lic. Conducir: <span style="color: #238636;">ACTIVA</span></p>
+                    <h3>🪪 DOCUMENTOS</h3>
+                    <p>🚗 Licencia Conducir: <span style="color: #238636;">ACTIVA</span></p>
+                    <p>🔫 Licencia Armas: <span style="color: #f85149;">PENDIENTE</span></p>
+                    <p>✈️ Licencia Vuelo: <span style="color: #f85149;">NO POSEE</span></p>
                 </div>
 
                 <div class="category-card">
-                    <h3>💰 ESTADO FINANCIERO</h3>
-                    <p>Efectivo: <span style="color: #238636;">$0.00</span></p>
-                    <p>Banco: <span style="color: #238636;">$0.00</span></p>
-                    <p>Multas: <span style="color: #f85149;">$0.00</span></p>
+                    <h3>💰 BILLETERA</h3>
+                    <p>💵 Efectivo: <span style="color: #238636;">$0.00</span></p>
+                    <p>🏦 Banco: <span style="color: #238636;">$0.00</span></p>
+                    <p>🧾 Multas: <span style="color: #f85149;">$0.00</span></p>
                 </div>
 
                 <div class="category-card">
-                    <h3>🚨 HISTORIAL PENAL</h3>
-                    <p>Arrestos: 0</p>
-                    <p>Advertencias: 0</p>
-                    <p>Puntos de Licencia: 12/12</p>
+                    <h3>🚨 ANTECEDENTES</h3>
+                    <p>🚫 Advertencias: 0</p>
+                    <p>🚔 Arrestos: 0</p>
+                    <p>⚠️ Puntos Licencia: 12/12</p>
                 </div>
 
                 <div class="category-card">
-                    <h3>🏠 PROPIEDADES</h3>
-                    <p>Vehículos: 0</p>
-                    <p>Viviendas: 0</p>
+                    <h3>🚘 PROPIEDADES</h3>
+                    <p>🏠 Viviendas: 0</p>
+                    <p>🏎️ Vehículos: 0</p>
                 </div>
             </div>
 
-            <br>
-            <button onclick="location.reload()" class="btn" style="background: #30363d; color: white;">CERRAR SESIÓN</button>
+            <div style="text-align: center; margin-top: 30px;">
+                <button onclick="location.href='https://cabanas20roleplay.github.io/sistema-pnc/'" class="btn" style="background: #f85149; color: white; font-size: 0.7rem;">DESCONECTAR</button>
+            </div>
         </div>
     </div>
 
